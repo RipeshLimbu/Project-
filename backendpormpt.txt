@@ -1,0 +1,33 @@
+
+#### 🔐 Authentication
+- API uses JWT or Session (mention used library if JWT)
+- Include how to obtain token (via `/api/login/`)
+
+#### 🧪 API Overview
+List all major API routes grouped by feature:
+- Auth
+- Menu
+- Cart
+- Order
+- Admin
+
+---
+
+### 4. **Other Instructions**
+- Use `django-cors-headers` for frontend communication
+- Setup media/image uploads for food item images
+- Add API pagination if needed (menu listing)
+- Use DRF’s `@permission_classes` to protect admin routes
+- Use `is_admin` boolean field in the User model to separate admin/customer
+
+---
+
+🎯 Goal:
+Build a clean, modular Django backend that:
+- Integrates with MySQL (XAMPP)
+- Provides RESTful APIs for frontend
+- Is easy to set up locally
+- Separates admin and customer functionality
+- Supports Khalti integration
+
+Do not write frontend code. Focus purely on the backend and documentation.

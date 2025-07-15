@@ -1,0 +1,251 @@
+🍽️ Project Overview: Single-Vendor Food Delivery System
+This project is a single-vendor food delivery platform, akin to Swiggy or Zomato, but specifically for one restaurant/vendor. Users can browse food items, place orders, and make payments via Khalti. The application uses:
+
+Frontend: React (latest) with Tailwind CSS
+
+Backend: Django (latest)
+
+Database: MySQL via XAMPP
+
+Payment Gateway: Khalti
+
+The platform is an end-to-end food e-commerce system that includes user authentication, menu management, cart, order tracking, delivery management, and secure online payments.
+
+🧭 Project Workflow
+User Registration & Login
+
+Users sign up and log in to the platform.
+
+JWT tokens/session-based authentication managed via Django.
+
+Browse Menu
+
+Users can view categorized food items.
+
+Each item has an image, price, description, and availability flag.
+
+Cart & Checkout
+
+Users add items to a cart.
+
+Quantity can be adjusted.
+
+At checkout, delivery address and optional instructions are submitted.
+
+Order Placement
+
+Order is created and stored with pending status.
+
+Payment is initiated via Khalti API.
+
+On success, order is confirmed and set to processing.
+
+Admin Panel (Vendor)
+
+Add/edit/delete food items.
+
+Manage inventory (availability, stock).
+
+View orders, change order status (processing, delivered, etc.)
+
+Delivery Status
+
+Users can track the order status in real-time (auto-refresh/polling).
+
+Notifications (Optional)
+
+Email/SMS notification on order confirmation and delivery.
+
+🧱 Backend API Structure (Django REST Framework)
+Auth APIs
+Endpoint	Method	Description
+/api/register/	POST	Register user
+/api/login/	POST	Authenticate and return token
+/api/logout/	POST	Logout user
+/api/user/	GET	Get user profile
+
+Menu APIs
+Endpoint	Method	Description
+/api/menu/	GET	List all food items
+/api/menu/	POST	(Admin) Add new item
+/api/menu/<id>/	PUT	(Admin) Edit item
+/api/menu/<id>/	DELETE	(Admin) Delete item
+
+Cart APIs (Frontend local or DB-backed)
+Endpoint	Method	Description
+/api/cart/	GET	Get cart
+/api/cart/	POST	Add item to cart
+/api/cart/<id>/	PUT	Update quantity
+/api/cart/<id>/	DELETE	Remove item
+
+Order APIs
+Endpoint	Method	Description
+/api/order/	POST	Place an order
+/api/order/	GET	List user’s orders
+/api/order/<id>/	GET	View single order status
+/api/order/<id>/status/	PATCH	(Admin) Update order status
+
+Khalti Payment API Integration
+Step	Description
+1. Initiate payment on frontend using Khalti JavaScript SDK.	
+2. On success, call Django backend to verify payment using Khalti Verification API (/api/payment/verify/).	
+3. If verified, update order status to "confirmed".	
+
+Admin APIs
+Endpoint	Method	Description
+/api/admin/orders/	GET	View all orders
+/api/admin/dashboard/	GET	Summary dashboard
+/api/admin/menu/	GET/POST	Manage food items
+
+🧩 Frontend (React + Tailwind)
+Pages
+Home (menu listing)
+
+Login/Register
+
+Cart
+
+Checkout
+
+Order Summary
+
+Order Tracking
+
+Admin Dashboard
+
+Components
+Navbar (with cart indicator)
+
+Food Card
+
+Cart Drawer/Modal
+
+Order Timeline
+
+Payment Modal (Khalti)
+
+Admin Item Editor
+
+💳 Khalti Integration Steps
+Add Khalti SDK in React:
+
+html
+Copy
+Edit
+<script src="https://khalti.com/static/khalti-checkout.js"></script>
+Initialize Khalti Checkout in JS with public_key.
+
+On successful payment, send token and amount to Django API:
+
+bash
+Copy
+Edit
+POST /api/payment/verify/
+{
+  "token": "xyz",
+  "amount": 1000
+}
+Backend verifies token with Khalti’s verification endpoint.
+
+If success, mark order as paid.
+
+📂 Database Schema (Simplified)
+Users
+id
+
+username
+
+email
+
+password
+
+is_admin (bool)
+
+FoodItems
+id
+
+name
+
+category
+
+description
+
+price
+
+image
+
+availability
+
+Orders
+id
+
+user_id
+
+total_amount
+
+payment_status
+
+order_status
+
+created_at
+
+OrderItems
+id
+
+order_id
+
+food_item_id
+
+quantity
+
+price
+
+🔧 Tech Setup Summary
+Backend: Django REST Framework, CORS, JWT/Auth
+
+Frontend: React + Tailwind + Axios
+
+Database: MySQL (XAMPP setup)
+
+Payment Gateway: Khalti (SDK + API)
+
+Hosting (Optional): Railway/Render (Backend), Vercel/Netlify (Frontend)
+
+Would you like me to generate:
+
+The Django models and views?
+
+React pages or components?
+
+Khalti integration code?
+
+Let me know what you want implemented next.
+
+
+
+
+
+
+
+
+You said:
+we dont want notification we want a sample admin dashboard
+
+
+ChatGPT said:
+Great! Here's a sample admin dashboard UI and API setup for your single-vendor food delivery system, based on your stack (React + Tailwind CSS, and Django backend).
+
+🧑‍🍳 Admin Dashboard Overview
+The admin dashboard will allow the restaurant owner to:
+
+View summary statistics (orders, revenue, food items).
+
+Manage food items (add/edit/delete).
+
+View and update order statuses.
+
+
+
+
+
+npm install @headlessui/react @heroicons/react react-router-dom axios react-hot-toast @reduxjs/toolkit react-redux

@@ -1,0 +1,17 @@
+Watching for file changes with StatReloader
+Not Found: /api/menu/
+[09/Jul/2025 12:06:24] "GET /api/menu/ HTTP/1.1" 404 18937
+Not Found: /api/menu/
+[09/Jul/2025 12:06:24] "GET /api/menu/ HTTP/1.1" 404 18937
+Not Found: /api/menu/
+[09/Jul/2025 12:10:23] "GET /api/menu/ HTTP/1.1" 404 18937
+Not Found: /api/menu/
+[09/Jul/2025 12:10:23] "GET /api/menu/ HTTP/1.1" 404 18937
+ http://0.0.0.0:8000/
+Quit the server with CTRL-BREAK.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+.djangoproject.com/en/5.2/howto/deployment/
+.djangoproject.com/en/5.2/howto/deployment/
+.djangoproject.com/en/5.2/howto/deployment/

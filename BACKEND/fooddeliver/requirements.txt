@@ -1,0 +1,12 @@
+Django>=5.0.0
+django-cors-headers>=4.3.1
+django-filter>=23.5
+channels>=4.0.0
+channels-redis>=3.5.0
+djangorestframework>=3.16.0
+djangorestframework-simplejwt>=5.3.1
+Pillow>=9.5.0
+mysqlclient>=2.2.1
+python-dotenv>=1.0.0
+requests>=2.31.0
+whitenoise>=6.6.0

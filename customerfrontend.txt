@@ -1,0 +1,97 @@
+You are an expert frontend developer working with an already built Django backend and MySQL database (XAMPP). The backend provides APIs for user authentication, menu browsing, cart management, order placement, and Khalti payment integration.
+
+I want you to build the **customer-facing frontend only** using the following stack:
+
+- React (latest, using functional components and hooks)
+- Tailwind CSS
+- Axios (for API communication)
+- React Router (for routing)
+
+This is a single-vendor food delivery system (like Swiggy or Zomato for one restaurant), so keep things focused and minimal. Do not build the admin side yet.
+
+---
+
+🛍️ **Key Features & Pages to Implement:**
+
+### 1. **Landing Page / Menu View**
+- Fetch and display all available food items from `/api/menu/`
+- Show:
+  - Image
+  - Name
+  - Price
+  - Description
+  - "Add to Cart" button
+- Optional: Category filter or search bar
+
+### 2. **Authentication**
+- **Login** and **Register** forms
+- Use `/api/register/` and `/api/login/` endpoints
+- Store auth token in localStorage or cookies
+- Protect routes like `/checkout` and `/orders` if the user is not logged in
+
+### 3. **Cart Page**
+- Local cart or synced with backend (`/api/cart/`)
+- Display list of selected items:
+  - Quantity adjust
+  - Remove option
+  - Total price calculation
+- “Proceed to Checkout” button
+
+### 4. **Checkout Page**
+- Form to enter delivery address and optional instructions
+- On submit, call `/api/order/` to place order (status: pending)
+- Integrate **Khalti** payment gateway:
+  - Use Khalti JS SDK
+  - On success, send `token` and `amount` to `/api/payment/verify/`
+
+### 5. **Order Confirmation**
+- After payment, show success screen with order summary and estimated delivery status
+
+### 6. **Order Tracking Page**
+- List past orders from `/api/order/`
+- Show current status: `Pending`, `Processing`, `Delivered`
+- Include order date, total, and items summary
+
+---
+
+📦 **API Overview** (already provided by backend):
+
+- `POST /api/register/` – Register user
+- `POST /api/login/` – Login
+- `GET /api/menu/` – Get food items
+- `POST /api/cart/` – Add item to cart
+- `GET/PUT/DELETE /api/cart/` – Manage cart
+- `POST /api/order/` – Place order
+- `GET /api/order/` – View order history
+- `POST /api/payment/verify/` – Verify Khalti payment
+
+---
+
+🧭 **Suggested Routes & Pages**
+
+| Route             | Page                     |
+|------------------|--------------------------|
+| `/`              | Menu / Landing Page      |
+| `/login`         | Login                    |
+| `/register`      | Register                 |
+| `/cart`          | Cart                     |
+| `/checkout`      | Checkout                 |
+| `/order-success` | Order Confirmation       |
+| `/orders`        | Order History/Tracking   |
+
+---
+
+🎯 **Additional Instructions**
+- Use Tailwind for all styling (no Bootstrap or CSS frameworks).
+- Handle loading and error states gracefully.
+- Use dummy data if an endpoint is not yet testable.
+- Use proper file/folder structure (`pages/`, `components/`, `utils/`, etc.)
+- Write reusable components like `FoodCard`, `CartItem`, `OrderCard`, etc.
+- Ensure responsive layout for mobile users.
+
+---
+
+⚠️ Important:
+Before building components, confirm the shape of real API responses by making test Axios calls to the Django backend. Match field names exactly (e.g. `food_item_id`, `quantity`, etc.).
+
+Do not build the admin side. Focus only on customer-facing features as listed.

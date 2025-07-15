@@ -1,0 +1,116 @@
+🧑‍🍳 Admin Dashboard Documentation
+For Single-Vendor Food Delivery System
+
+📌 Purpose
+The Admin Dashboard provides the restaurant owner with an intuitive interface to manage food inventory, track orders, and monitor business performance in real-time.
+
+🧭 Dashboard Sections
+1. Dashboard Overview (Home Panel)
+A summary section showing business metrics:
+
+Total Orders: Cumulative number of orders received.
+
+Total Revenue: Total income from completed (paid) orders.
+
+Pending Orders: Current orders that are yet to be processed or delivered.
+
+Active Menu Items: Number of food items currently available for ordering.
+
+2. Order Management Panel
+A table of all orders placed by users. Admin can:
+
+View Order ID, Customer Name, Amount, Payment Status, Order Status.
+
+Update the order status from options like:
+
+Pending
+
+Processing
+
+Delivered
+
+Click “View” to see full order details including items ordered, quantity, instructions, etc.
+
+Actions:
+Update order status (via dropdown or button).
+
+Filter orders by status (optional).
+
+3. Food Menu Management Panel
+A management panel for food items with a table that lists:
+
+Item Name
+
+Category
+
+Price
+
+Availability
+
+Actions: Edit, Delete
+
+Admin Can:
+Add new food items via a modal or separate page.
+
+Edit existing items: name, description, price, image, availability.
+
+Delete items that are no longer offered.
+
+Toggle availability (active/inactive).
+
+⚙️ Required API Endpoints
+🟢 Summary Statistics
+GET /api/admin/summary/
+Returns a snapshot of total orders, revenue, etc.
+
+Response:
+
+json
+Copy
+Edit
+{
+  "total_orders": 324,
+  "revenue": 48000,
+  "pending_orders": 15,
+  "active_items": 24
+}
+📦 Orders Management
+Endpoint	Method	Description
+/api/admin/orders/	GET	Get all user orders
+/api/admin/orders/<id>/status/	PATCH	Update order status (pending, processing, delivered)
+/api/admin/orders/<id>/	GET	Get single order detail (optional)
+
+🍽️ Food Menu Management
+Endpoint	Method	Description
+/api/admin/menu/	GET	Fetch all food items
+/api/admin/menu/	POST	Add new food item
+/api/admin/menu/<id>/	PUT	Edit food item
+/api/admin/menu/<id>/	DELETE	Remove food item
+
+🧰 Features Recap
+Feature	Description
+Summary Panel	Shows real-time order, revenue, inventory stats
+Order Table	View/update order status
+Menu Table	Add/edit/delete food items
+Authentication	Access restricted to authenticated admin user
+
+🔐 Access Control
+Only admin (restaurant owner) has access to:
+
+/admin/dashboard
+
+All admin-specific API endpoints
+
+Use role-based permission or is_admin flag in user model to restrict access.
+
+🗂️ Optional Add-ons (Future Enhancements)
+Search and filter orders
+
+Export orders as CSV
+
+Graphs/charts for revenue trends
+
+Multiple admin users or staff roles
+
+Delivery time estimates
+

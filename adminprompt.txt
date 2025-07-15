@@ -1,0 +1,59 @@
+You are a full-stack AI developer.
+
+I am building a food delivery system for a single vendor (like Swiggy/Zomato for one restaurant). Most of the backend is already set up using Django and MySQL (XAMPP). I want you to build the client-side (frontend) using the following stack:
+
+- React (latest, functional components with hooks)
+- Tailwind CSS
+- Axios for API communication
+
+🧩 The backend already provides APIs for:
+- User authentication (JWT or session)
+- Menu browsing and ordering
+- Cart and order placement
+- Admin dashboard (order management and menu management)
+- Khalti payment integration
+
+Now, based on the following admin dashboard documentation, build the complete client-side UI for the admin section only:
+
+---
+
+🧑‍🍳 **Admin Dashboard Features:**
+
+1. **Dashboard Overview (Home Panel)**
+   - Display Total Orders, Total Revenue, Pending Orders, Active Menu Items (via `/api/admin/summary/`)
+
+2. **Orders Management Panel**
+   - Table listing all orders with:
+     - Order ID
+     - Customer Name
+     - Amount
+     - Payment Status
+     - Order Status (editable via dropdown: pending, processing, delivered)
+     - View button (optional modal or page to show order details)
+   - API: `/api/admin/orders/`, `/api/admin/orders/<id>/status/`
+
+3. **Food Menu Management Panel**
+   - Table showing:
+     - Food Item Name
+     - Price
+     - Availability
+     - Edit/Delete buttons
+   - Ability to add new item via modal/form
+   - API: `/api/admin/menu/` (GET, POST, PUT, DELETE)
+
+---
+
+🔎 **Requirements:**
+- Before building components, fetch and check current backend API responses using test Axios calls.
+- Make sure the client-side reflects real API structure (field names, endpoint structure).
+- Use Tailwind for layout and responsive design.
+- Structure the admin dashboard in a modular way (dashboard page + components).
+- Route setup for: `/admin/dashboard`, `/admin/orders`, `/admin/menu`
+
+💡 Use dummy data only when API testing is not possible.
+
+📁 Suggest a clean folder structure for organizing dashboard components.
+
+🎯 Goal: A clean, functional admin panel frontend that connects with existing backend.
+
+Do not build the customer-facing side yet — only the admin dashboard as per the provided documentation.
