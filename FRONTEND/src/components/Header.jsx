@@ -18,8 +18,8 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="text-2xl font-bold text-indigo-600">FoodStore</Link>
         <nav className="flex items-center gap-6">
-          <Link to="/admin/home" className="hover:text-indigo-700 font-medium">Home</Link>
-          <Link to="/" className="hover:text-indigo-700 font-medium">Menu</Link>
+          <Link to="/" className="hover:text-indigo-700 font-medium">Home</Link>
+          <Link to="/menu" className="hover:text-indigo-700 font-medium">Menu</Link>
           <Link to="/cart" className="relative hover:text-indigo-700 font-medium">
             Cart
             {cartCount > 0 && (

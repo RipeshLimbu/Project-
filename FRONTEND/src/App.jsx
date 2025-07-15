@@ -22,12 +22,11 @@ const App = () => {
       <main className="min-h-[80vh]">
         <Routes>
           <Route path="/login" element={<Login />} />
-          {/* Customer-facing routes */}
-          <Route path="/" element={<MenuPage />} />
+          {/* Landing page route - nice landing page */}
+          <Route path="/" element={<AdminHome />} />
+          <Route path="/menu" element={<MenuPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          {/* Admin Home Route */}
-          <Route path="/admin/home" element={<AdminHome />} />
           {/* Admin Routes */}
           <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
             <Route index element={<Dashboard />} />

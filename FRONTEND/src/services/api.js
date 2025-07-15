@@ -51,12 +51,10 @@ const auth = {
   logout: () => api.post('/api/logout/'),
 };
 
-// --- CUSTOMER ---
+// --- MENU ---
 const menu = {
   getAll: () => api.get('/api/products/'),
 };
-
-
 
 const order = {
   place: (data) => api.post('/api/orders/', data),
@@ -70,7 +68,19 @@ const payment = {
 
 // --- ADMIN ---
 const admin = {
-  summary: () => api.get('/api/admin/summary/'),
+  // Using products endpoint for now until admin summary endpoint is ready
+  summary: async () => {
+    const response = await api.get('/api/products/');
+    const products = Array.isArray(response.data) ? response.data : 
+                    Array.isArray(response.data.results) ? response.data.results : [];
+    return {
+      data: {
+        total_orders: 0,
+        total_revenue: 0,
+        total_products: products.length
+      }
+    };
+  },
   orders: {
     getAll: () => api.get('/api/admin/orders/'),
     getOne: (id) => api.get(`/api/admin/orders/${id}/`),
